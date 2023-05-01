@@ -86,9 +86,17 @@ const Header = ({ productsAmount }) => {
               {loading ? (
                 <p className="animate-spin w-8 h-8 rounded-full border-8 border-dotted border-blue-600"></p>
               ) : user ? (
-                <button onClick={handleLogOut} className="link">
-                  Log out
-                </button>
+                <>
+                  <button onClick={handleLogOut} className="link">
+                    Log out
+                  </button>
+                  <img
+                    className="w-8 h-8 rounded-full border"
+                    title="Hello dolly"
+                    src=""
+                    alt=""
+                  />
+                </>
               ) : (
                 <NavLink className="link" to="login">
                   Login
