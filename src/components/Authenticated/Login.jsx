@@ -5,7 +5,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../loading/Loading";
 
 const Login = () => {
-  const { user, loginUser, loading } = useContext(AuthContext);
+  const { googleSing, gitHubSign, loginUser, loading } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -15,10 +16,6 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
-
-  // all variables.
-  const passwordRegEx = /^(?=.*\d.*\d).{8,}$/;
-  const emailRegEx = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
   if (loading) return <Loading></Loading>;
 
@@ -37,6 +34,21 @@ const Login = () => {
       .catch((error) => {
         setErrorMsg(error.message);
       });
+  };
+
+  const handleGoogleLogin = () => {
+    googleSing()
+      .then((result) => {
+        navigate(from);
+      })
+      .catch((err) => setErrorMsg(err.message));
+  };
+  const handleGitHubLogin = () => {
+    gitHubSign()
+      .then((result) => {
+        navigate(from);
+      })
+      .catch((err) => setErrorMsg(err.message));
   };
 
   return (
@@ -103,11 +115,17 @@ const Login = () => {
       </form>
       <div className="divider my-5 mx-5">OR</div>
 
-      <div className="flex items-center justify-evenly">
-        <p className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold">
+      <div className="flex items-center justify-evenly mb-3">
+        <p
+          onClick={handleGoogleLogin}
+          className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold"
+        >
           Google
         </p>
-        <p className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold">
+        <p
+          onClick={handleGitHubLogin}
+          className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold"
+        >
           GitHub
         </p>
       </div>

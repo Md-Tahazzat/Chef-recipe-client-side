@@ -33,14 +33,13 @@ const AuthProvider = ({ children }) => {
   const gitHubSign = () => signInWithPopup(auth, gitHubProvider);
   const logOutUser = () => signOut(auth);
 
-  const googleLogin = () =>
-    useEffect(() => {
-      const unSubscribed = onAuthStateChanged(auth, (loggedUser) => {
-        setUser(loggedUser), setLoading(false);
-      });
+  useEffect(() => {
+    const unSubscribed = onAuthStateChanged(auth, (loggedUser) => {
+      setUser(loggedUser), setLoading(false);
+    });
 
-      return () => unSubscribed();
-    }, []);
+    return () => unSubscribed();
+  }, []);
 
   const authInfo = {
     user,

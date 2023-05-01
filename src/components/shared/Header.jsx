@@ -99,15 +99,18 @@ const Header = ({ productsAmount }) => {
                 </NavLink>
               </li>
             )}
-
-            <li>
+            {user && (
               <img
-                className="w-8 h-8 rounded-full border z-50"
-                title="Hello dolly"
-                src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
+                className="w-10 h-10 rounded-full border"
+                title={user ? user.displayName : ""}
+                src={
+                  user?.photoURL
+                    ? user.photoURL
+                    : "https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
+                }
                 alt=""
               />
-            </li>
+            )}
           </ul>
         </div>
       </div>
