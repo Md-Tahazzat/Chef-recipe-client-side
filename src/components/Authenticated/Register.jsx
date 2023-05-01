@@ -33,7 +33,6 @@ const Register = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.message);
         setErrorMsg(err.message);
       });
   };
@@ -44,55 +43,54 @@ const Register = () => {
         onSubmit={handleSubmit}
         className="rounded-lg bg-slate-50 px-5 py-3 md:border lg:border lg:border-slate-200  lg:shadow-lg"
       >
-        <h1 className="my-5 text-center text-3xl font-bold text-blue-700 dark:text-secondary lg:text-4xl">
+        <h1 className="my-5 text-center text-3xl font-bold text-blue-700  lg:text-4xl">
           Please Register
         </h1>
         <div className="input-box pt-5">
+          <label
+            htmlFor="text"
+            className="input-label pointer-events-none bg-slate-50"
+          >
+            Email
+          </label>
           <input
-            className="w-full rounded-md border bg-transparent py-2 px-4 text-xl focus:border-2 focus:border-blue-700 focus:outline-none dark:focus:border-blue-300 "
+            className="w-full rounded-md border bg-transparent py-2 px-4 text-xl focus:border-2 focus:border-blue-700 focus:outline-none"
             autoComplete="off"
             type="email"
             required
             name="email"
           />
-          <label
-            htmlFor="text"
-            className="input-label pointer-events-none bg-slate-50 dark:bg-slate-700 dark:text-white"
-          >
-            Email
-          </label>
         </div>
         <div className="input-box mt-[-15px]">
+          <label
+            htmlFor="password"
+            className="input-label pointer-events-none bg-slate-50"
+          >
+            Password
+          </label>
           <input
-            className="w-full rounded-md border bg-transparent py-2 px-4 text-xl focus:border-2 focus:border-blue-700 focus:outline-none dark:focus:border-blue-300 "
+            className="w-full rounded-md border bg-transparent py-2 px-4 text-xl focus:border-2 focus:border-blue-700 focus:outline-none"
             autoComplete="off"
             type="password"
             name="password"
             required
           />
-
-          <label
-            htmlFor="password"
-            className="input-label pointer-events-none bg-slate-50 dark:bg-slate-700 dark:text-white"
-          >
-            Password
-          </label>
         </div>
         <div className="input-box mt-[-15px]">
+          <label
+            htmlFor="password"
+            className="input-label pointer-events-none bg-slate-50"
+          >
+            Confirm Password
+          </label>
           <input
-            className="w-full rounded-md border bg-transparent py-2 px-4 text-xl focus:border-2 focus:border-blue-700 focus:outline-none dark:focus:border-blue-300 "
+            className="w-full rounded-md border bg-transparent py-2 px-4 text-xl focus:border-2 focus:border-blue-700 focus:outline-none "
             autoComplete="off"
             type="password"
             name="confirmPassword"
             required
           />
 
-          <label
-            htmlFor="password"
-            className="input-label pointer-events-none bg-slate-50 dark:bg-slate-700 dark:text-white"
-          >
-            Confirm Password
-          </label>
           {errorMsg && <p className="text-red-400">{errorMsg}</p>}
         </div>
 
@@ -102,7 +100,7 @@ const Register = () => {
               Already have an account?
               <NavLink
                 to="/login"
-                className="font-bold ml-1 text-blue-600 hover:text-blue-900 dark:text-secondary dark:hover:text-blue-400"
+                className="font-bold ml-1 text-blue-600 hover:text-blue-900"
               >
                 Login
               </NavLink>

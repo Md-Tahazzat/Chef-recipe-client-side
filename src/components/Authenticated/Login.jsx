@@ -11,10 +11,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   // all useState Hooks
-  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-
-  const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -24,27 +21,6 @@ const Login = () => {
   const emailRegEx = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
   if (loading) return <Loading></Loading>;
-
-  const handleEmailChange = (e) => {
-    if (!emailRegEx.test(e.target.value) || email !== "") {
-      setEmailError("Please provide a valid email");
-    } else {
-      setEmailError("");
-    }
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    if (!passwordRegEx.test(e.target.value) && !password === "") {
-      console.log("inside paswordError");
-      setPasswordError(
-        "password must be at least 8 charecters containing 2 digits"
-      );
-    } else {
-      setPasswordError("");
-    }
-    setPassword(e.target.value);
-  };
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -59,7 +35,6 @@ const Login = () => {
         navigate(from);
       })
       .catch((error) => {
-        console.log(error.message);
         setErrorMsg(error.message);
       });
   };
@@ -70,49 +45,36 @@ const Login = () => {
         onSubmit={handleLogIn}
         className="rounded-lg shadow-lg bg-slate-50 px-5 py-1  md:border lg:border lg:border-slate-200 lg:shadow-lg"
       >
-        <h1 className="my-5 text-center text-3xl font-bold text-blue-700 dark:text-secondary lg:text-4xl">
+        <h1 className="my-5 text-center text-3xl font-bold text-blue-700  lg:text-4xl">
           Please LogIn
         </h1>
         <div className="input-box pt-5">
+          <label htmlFor="text">Email</label>
           <input
-            value={email}
-            onChange={handleEmailChange}
-            className={`input-style ${
-              email
-                ? `${emailError ? "border-red-400" : "border-green-400"}`
-                : "focus:border-blue-400"
-            }`}
+            className="input-style focus:border-blue-400"
             autoComplete="off"
             type="email"
             required
             name="email"
           />
-          <label htmlFor="text">Email</label>
-          {email && emailError && <p className="-mt-4 mb-10">{emailError}</p>}
+
+          {emailError && <p className="-mt-4 mb-10">{emailError}</p>}
         </div>
         <div className="input-box mt-[-15px]">
+          <label htmlFor="password">Password</label>
           <input
-            className={`input-style ${
-              password
-                ? `${passwordError ? "border-red-400" : "border-green-400"}`
-                : "focus:border-blue-400"
-            }`}
+            className="input-style focus:border-blue-400"
             autoComplete="off"
             type="password"
-            name="password"
-            value={password}
-            onChange={handlePasswordChange}
             required
+            name="password"
           />
 
-          <label htmlFor="password">Password</label>
-          {password && passwordError && (
-            <p className="-mt-4 mb-10">{passwordError}</p>
-          )}
+          {passwordError && <p className="-mt-4 mb-10">{passwordError}</p>}
 
           {errorMsg && (
             <Link
-              className="mt-[-20px] mb-3 block w-32 text-blue-700 hover:underline dark:text-blue-400 "
+              className="mt-[-20px] mb-3 block w-32 text-blue-700 hover:underline "
               to="forgotPassword"
             >
               forgot password?
@@ -126,7 +88,7 @@ const Login = () => {
               Don't have an account?
               <NavLink
                 to="/register"
-                className="font-bold ml-1 cursor-pointer text-blue-600 hover:text-blue-900 dark:text-secondary dark:hover:text-blue-400"
+                className="font-bold ml-1 cursor-pointer text-blue-600 hover:text-blue-900"
               >
                 Create account
               </NavLink>
@@ -140,6 +102,15 @@ const Login = () => {
         </div>
       </form>
       <div className="divider my-5 mx-5">OR</div>
+
+      <div className="flex items-center justify-evenly">
+        <p className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold">
+          Google
+        </p>
+        <p className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold">
+          GitHub
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FaBeer } from "react-icons/fa";
 
 const Header = ({ productsAmount }) => {
   const location = useLocation();
@@ -66,12 +67,12 @@ const Header = ({ productsAmount }) => {
             </ul>
           </div>
 
-          <h1 className=" ml-auto mr-auto md:ml-0 md:mr-0 text-3xl font-bold text-orange-500">
+          <h1 className=" ml-auto mr-auto md:ml-0 md:mr-0 text-2xl md:text-3xl font-bold text-orange-500">
             Yummy Yums
           </h1>
         </div>
         <div className="navbar-end hidden w-full md:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 flex items-center">
             <li>
               <NavLink className="link" to="/">
                 Home
@@ -82,26 +83,30 @@ const Header = ({ productsAmount }) => {
                 Blogs
               </NavLink>
             </li>
-            <li>
-              {loading ? (
-                <p className="animate-spin w-8 h-8 rounded-full border-8 border-dotted border-blue-600"></p>
-              ) : user ? (
-                <>
-                  <button onClick={handleLogOut} className="link">
-                    Log out
-                  </button>
-                  <img
-                    className="w-8 h-8 rounded-full border"
-                    title="Hello dolly"
-                    src=""
-                    alt=""
-                  />
-                </>
-              ) : (
+
+            {loading ? (
+              <li className="w-5 h-5 border-4 border-blue-500 rounded-full"></li>
+            ) : user ? (
+              <li>
+                <button onClick={handleLogOut} className="link">
+                  Log out
+                </button>
+              </li>
+            ) : (
+              <li>
                 <NavLink className="link" to="login">
                   Login
                 </NavLink>
-              )}
+              </li>
+            )}
+
+            <li>
+              <img
+                className="w-8 h-8 rounded-full border z-50"
+                title="Hello dolly"
+                src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
+                alt=""
+              />
             </li>
           </ul>
         </div>
