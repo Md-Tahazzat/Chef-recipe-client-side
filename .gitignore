@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.vscode
+
+
+
+<img src="https://i.ibb.co/1dhvwqV/food.png" alt="food" border="0">
+<img src="https://i.ibb.co/jwJD0vB/yummy-yums.png" alt="yummy-yums" border="0">
