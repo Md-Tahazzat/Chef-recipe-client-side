@@ -1,12 +1,19 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Recipe = ({ recipe }) => {
   const [showAll, setShowAll] = useState(false);
-  console.log(recipe);
+  const [disable, setDisable] = useState(false);
   const { cooking_method, ingredients, name, rating } = recipe;
   const toogleShowAll = () => {
     setShowAll(!showAll);
   };
+
+  const handleDisabled = () => {
+    toast.success("Recipe added to your favorite list");
+    setDisable(true);
+  };
+  console.log("rendering");
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <div className="card-body">
@@ -29,6 +36,16 @@ const Recipe = ({ recipe }) => {
         <button onClick={toogleShowAll}>
           {showAll ? "See Less" : "See More"}
         </button>
+        <button
+          disabled={disable}
+          onClick={handleDisabled}
+          className={`py-1 w-full btn border-none rounded-lg text-slate-50 text-lg duration-300 ${
+            disable ? "bg-red-200" : " bg-slate-400 hover:bg-slate-500"
+          }`}
+        >
+          Favorite
+        </button>
+        <ToastContainer />
       </div>
     </div>
   );

@@ -1,17 +1,25 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import {
+  NavLink,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import "./login.css";
 import Loading from "../loading/Loading";
 
 const Register = () => {
   const navigate = useNavigate();
+  const navigation = useNavigation();
+
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const { googleSing, gitHubSign, createUser, loading } =
     useContext(AuthContext);
   const [errorMsg, setErrorMsg] = useState("");
 
+  if (navigation.state === "loading") return <Loading></Loading>;
   if (loading) return <Loading></Loading>;
 
   const handleSubmit = (e) => {

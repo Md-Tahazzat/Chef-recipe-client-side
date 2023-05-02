@@ -1,6 +1,12 @@
 import React, { useContext, useState } from "react";
 import "./Login.css";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../loading/Loading";
 import { FaGoogle, FaGithub } from "react-icons/fa";
@@ -9,6 +15,7 @@ const Login = () => {
   const { googleSing, gitHubSign, loginUser, loading } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const navigation = useNavigation();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
@@ -18,6 +25,7 @@ const Login = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
 
+  if (navigation.state === "loading") return <Loading></Loading>;
   if (loading) return <Loading></Loading>;
 
   const handleLogIn = (e) => {

@@ -1,9 +1,12 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Recipe from "../Recipe/Recipe";
+import Loading from "../loading/Loading";
 
 const Recipes = () => {
   const chefDetails = useLoaderData();
+  const navigation = useNavigation();
+  if (navigation.state === "loading") return <Loading></Loading>;
   const {
     id,
     img,

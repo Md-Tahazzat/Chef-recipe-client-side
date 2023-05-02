@@ -1,11 +1,15 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Chef from "../Chef/Chef";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import Loading from "../loading/Loading";
 
 const Home = () => {
   const chefs = useLoaderData();
+  const navigation = useNavigation();
+  if (navigation.state === "loading") return <Loading></Loading>;
+
   const handleFeedBack = (e) => {
     e.preventDefault();
     toast.success("Thank you so much for your concern");

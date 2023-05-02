@@ -1,7 +1,10 @@
 import React from "react";
-import { Link, useRouteError } from "react-router-dom";
+import { Link, useNavigation, useRouteError } from "react-router-dom";
+import Loading from "../loading/Loading";
 
 const FileNotFound = () => {
+  const navigation = useNavigation();
+  if (navigation.state === "loading") return <Loading></Loading>;
   const error = useRouteError();
   return (
     <div className="min-h-[calc(100vh-121px)] font-bold w-full flex flex-col items-center justify-center">
