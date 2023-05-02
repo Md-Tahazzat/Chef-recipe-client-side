@@ -13,6 +13,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("https://server-side-md-tahazzat.vercel.app/chefs"),
       },
       {
         path: "data",
