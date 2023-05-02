@@ -30,7 +30,7 @@ const Register = () => {
       setErrorMsg("password didn't match to confirm password");
       return;
     } else if (password.length < 6) {
-      setErrorMsg("Your password should have more than 6 charecters");
+      setErrorMsg("Your password should at least 6 charecters");
       return;
     }
 
@@ -109,7 +109,6 @@ const Register = () => {
             className="w-full border pl-1 my-2 rounded-lg focus:outline-none"
             autoComplete="off"
             type="file"
-            required
             name="photoURL"
           />
         </div>
