@@ -1,9 +1,16 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Chef from "../Chef/Chef";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   const chefs = useLoaderData();
+  const handleFeedBack = (e) => {
+    e.preventDefault();
+    toast.success("Thank you so much for your concern");
+    e.target.reset();
+  };
   return (
     <>
       <section className="mt-10 md:mx-20 md:mb-24 flex md:items-center justify-between flex-col-reverse md:flex-row">
@@ -37,7 +44,7 @@ const Home = () => {
       </section>
 
       <section className="py-28 md:py-24 md:mx-24">
-        <h1 className="text-center md:mb-10 text-2xl md:text-3xl font-bold text-slate-600">
+        <h1 className="text-center pb-10 text-2xl md:text-3xl font-bold text-slate-600">
           New Arrivals
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -75,6 +82,54 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="py-28 md:py-24 md:mx-24">
+        <h1 className="text-center mb-14 text-2xl md:text-3xl font-bold text-slate-600">
+          We need your feedback
+        </h1>
+        <div className="flex w-full justify-between">
+          <img
+            className="w-full hidden md:block"
+            src="https://i.ibb.co/XSq3r6D/feedback.png"
+            alt="feedback"
+          />
+          <form
+            onSubmit={handleFeedBack}
+            className="rounded-lg shadow-lg bg-slate-50 px-5 py-1  md:border lg:border w-full lg:border-slate-200 lg:shadow-lg"
+          >
+            <div className="input-box pt-5">
+              <label htmlFor="text">Email</label>
+              <input
+                className="input-style focus:border-blue-400"
+                autoComplete="off"
+                type="email"
+                required
+                name="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="input-box mt-[-15px]">
+              <label htmlFor="password">Message</label>
+              <textarea
+                className="input-style focus:border-blue-400"
+                autoComplete="off"
+                type="password"
+                required
+                name="password"
+              ></textarea>
+            </div>
+
+            <div className="pt-1 pb-5">
+              <input
+                type="submit"
+                className="hover:bg-yellow-600 mt-5 inline-block rounded bg-yellow-500 py-1 px-3 text-white md:mr-10 lg:mr-10  lg:text-2xl"
+                value="Send"
+              />
+            </div>
+          </form>
+        </div>
+        <ToastContainer />
       </section>
     </>
   );

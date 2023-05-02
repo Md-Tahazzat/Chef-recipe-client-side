@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-[90rem]">
         <div className="py-4 md:py-8 text-slate-600 lg:mx-20 flex flex-col md:flex-row justify-between gap-10">
           <div className="ml-4 md:ml-0">
-            <h1 className="text-2xl font-bold mb-2 text-slate-700">
+            <h1 className="text-2xl pt-10 md:pt-0 font-bold mb-2 text-slate-700">
               Follow Us
             </h1>
             <div className="flex text-white gap-10 items-center mt-5">
