@@ -37,7 +37,7 @@ const Footer = () => {
             <h1 className="text-2xl font-bold mb-2 text-slate-700">
               Subscribe to Our Newsletter
             </h1>
-            <p className="max-w-96">
+            <p className="max-w-[24rem]">
               Stay up-to-date with the latest recipes, cooking tips, and news
               from Delicious Delight. Subscribe to our newsletter today!
             </p>

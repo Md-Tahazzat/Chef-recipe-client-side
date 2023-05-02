@@ -3,6 +3,7 @@ import "./Login.css";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../loading/Loading";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
   const { googleSing, gitHubSign, loginUser, loading } =
@@ -118,14 +119,20 @@ const Login = () => {
       <div className="flex items-center justify-evenly mb-3">
         <p
           onClick={handleGoogleLogin}
-          className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold"
+          className="py-2 px-4 flex items-center text-slate-600 gap-3 bg-slate-300 rounded-md hover:bg-slate-400 font-bold"
         >
+          <span>
+            <FaGoogle />
+          </span>
           Google
         </p>
         <p
           onClick={handleGitHubLogin}
-          className="py-2 px-4 bg-slate-300 rounded-md hover:bg-slate-400 font-bold"
+          className="py-2 px-4 flex gap-3 text-slate-600 items-center bg-slate-300 rounded-md hover:bg-slate-400 font-bold"
         >
+          <span>
+            <FaGithub />
+          </span>
           GitHub
         </p>
       </div>
