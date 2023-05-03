@@ -5,6 +5,8 @@ import Login from "../components/Authenticated/Login";
 import Home from "../components/Home/Home";
 import Recipes from "../components/Recipes'/Recipes";
 import FileNotFound from "../components/shared/FileNotFound";
+import PrivateRouter from "../components/Authenticated/PrivateRoute";
+import Blog from "../components/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +21,19 @@ const router = createBrowserRouter([
       },
       {
         path: "chefs/:id",
-        element: <Recipes></Recipes>,
+        element: (
+          <PrivateRouter>
+            <Recipes></Recipes>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://server-side-md-tahazzat.vercel.app/chefs/${params.id}`
           ),
+      },
+      {
+        path: "blogs",
+        element: <Blog />,
       },
       {
         path: "login",

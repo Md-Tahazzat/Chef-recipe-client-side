@@ -15,7 +15,7 @@ const Recipe = ({ recipe }) => {
   };
   console.log("rendering");
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact my-5 md:my-0 bg-slate-100 shadow-xl">
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <div className="mb-2">
