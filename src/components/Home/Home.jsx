@@ -4,6 +4,7 @@ import Chef from "../Chef/Chef";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Loading from "../loading/Loading";
+import LazyLoad from "react-lazy-load";
 
 const Home = () => {
   const chefs = useLoaderData();
@@ -17,22 +18,24 @@ const Home = () => {
   };
   return (
     <>
-      <section className="mt-10 md:mx-20 md:mb-24 flex md:items-center justify-between flex-col-reverse md:flex-row">
+      <section className="mt-10 md:mx-20 md:mb-24 flex md:items-center justify-evenly flex-col-reverse md:flex-row">
         <div className="w-full">
           <h1 className="text-3xl md:text-4xl text-orange-500 font-bold mb-10">
             Come Hungry <br />
             Leave Happy
           </h1>
-          <p className="text-xl text-slate-600">
+          <p className="text-xl text-slate-600 max-w-[30rem]">
             Feast Your Senses - Discover a world of flavor and indulge your
             taste buds with our collection of mouth-watering recipes.
           </p>
         </div>
-        <img
-          className="w-full h-full"
-          src="https://i.ibb.co/6vFkJ7x/banner-food.png"
-          alt="banner-food"
-        />
+
+        <LazyLoad offset={300}>
+          <img
+            src="https://i.ibb.co/6vFkJ7x/banner-food.png"
+            alt="banner-food"
+          />
+        </LazyLoad>
       </section>
 
       {/* chef section */}

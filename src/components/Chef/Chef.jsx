@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazy-load";
 
 const Chef = ({ chef }) => {
   const {
@@ -14,7 +15,9 @@ const Chef = ({ chef }) => {
   } = chef;
   return (
     <div className="card bg-slate-100 shadow-xl mt-14 md:mt-0 border rounded-lg md:mx-0">
-      <img className="h-72 rounded-lg" src={img} alt="chef-img" />
+      <LazyLoad offset={300}>
+        <img className="h-72 rounded-lg" src={img} alt="chef-img" />
+      </LazyLoad>
 
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
