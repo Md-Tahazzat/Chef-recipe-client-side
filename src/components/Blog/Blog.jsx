@@ -30,11 +30,14 @@ const Blog = () => {
           2. How to validate React props using PropTypes?
         </div>
         <div className="collapse-content">
-          <p className="font-semibold">
-            First we need to import PropsTypes from "props-types"; Then we need
-            to create a functional component which will take props. Then we need
-            to create Component.propsTypes method and inside that method we need
-            to define the validation method. Example :
+          <div className="font-semibold">
+            <p>
+              {" "}
+              First we need to import PropsTypes from "props-types"; Then we
+              need to create a functional component which will take props. Then
+              we need to create Component.propsTypes method and inside that
+              method we need to define the validation method. Example :
+            </p>
             <code>
               <pre>
                 {`
@@ -48,7 +51,7 @@ const Blog = () => {
            `}
               </pre>
             </code>
-          </p>
+          </div>
         </div>
       </div>
       <div className="collapse collapse-plus border w-full md:w-4/6 rounded-lg my-2">

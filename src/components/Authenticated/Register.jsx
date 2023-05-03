@@ -14,7 +14,7 @@ const Register = () => {
   const navigation = useNavigation();
 
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from || "/";
   const { googleSing, gitHubSign, createUser, loading } =
     useContext(AuthContext);
   const [errorMsg, setErrorMsg] = useState("");
@@ -45,7 +45,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         form.reset();
-        navigate("/");
+        navigate(from);
       })
       .catch((err) => {
         setErrorMsg(err.message);
@@ -66,6 +66,9 @@ const Register = () => {
       })
       .catch((err) => setErrorMsg(err.message));
   };
+
+  console.log(from);
+  console.log(location);
 
   return (
     <div className="login-form mx-auto pt-10 box-border min-h-[calc(100vh-121px)]  md:min-h-[calc(100vh-161px)] w-full md:w-3/6 lg:w-2/6">
@@ -158,6 +161,7 @@ const Register = () => {
             <small>
               Already have an account?
               <NavLink
+                state={{ from: location?.state?.from }}
                 to="/login"
                 className="font-bold ml-1 text-blue-600 hover:text-blue-900"
               >

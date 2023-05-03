@@ -60,6 +60,9 @@ const Login = () => {
       .catch((err) => setErrorMsg(err.message));
   };
 
+  console.log(location);
+  console.log(from);
+
   return (
     <div className="login-form mx-auto pt-10 box-border min-h-[calc(100vh-121px)]  md:min-h-[calc(100vh-161px)] w-full md:w-3/6 lg:w-2/6">
       <form
@@ -91,12 +94,12 @@ const Login = () => {
             name="password"
           />
 
-          {passwordError && <p className="-mt-4 mb-10">{passwordError}</p>}
+          {errorMsg && <p className="mt-2 mb-10 text-red-600">{errorMsg}</p>}
 
           {errorMsg && (
             <Link
-              className="mt-[-20px] mb-3 block w-32 text-blue-700 hover:underline "
-              to="forgotPassword"
+              className="mt-2 mb-3 block w-32 text-blue-700 hover:underline "
+              to="#"
             >
               forgot password?
             </Link>
@@ -108,6 +111,7 @@ const Login = () => {
             <small>
               Don't have an account?
               <NavLink
+                state={{ from: from }}
                 to="/register"
                 className="font-bold ml-1 cursor-pointer text-blue-600 hover:text-blue-900"
               >
